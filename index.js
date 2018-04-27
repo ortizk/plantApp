@@ -17,7 +17,7 @@ app.use(express.static('public'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // connect to the database
-mongoose.connect('mongodb://localhost/plants', function(err) {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/plants', function(err) {
     if (err) {
         console.log(err);
     } else {
