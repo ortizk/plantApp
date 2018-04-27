@@ -14,14 +14,21 @@ img{
 	height: 400px;
 }
 body {
-	background-image: url('../images/background2.jpg')
+	background-image: url('../images/background2.jpg');
+    position: relative;
+    background-size: 100%;
+   	background-size: cover;
+    background-position: center center;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 .headerNav {
 
 }
 .nav {
 	background-color: white;
-	height: 150px;
+	height: 75px;
 }
 .btn {
 	color: black;

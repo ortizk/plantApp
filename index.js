@@ -9,6 +9,7 @@ var mongoose 		= require('mongoose');
 var passport 		= require('./config/passportConfig');
 var session 		= require('express-session');
 var path 			= require('path');
+//var UserDb = require('./models/user')
 
 // app variable
 var app = express();
@@ -18,7 +19,7 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 // connect to the database
 mongoose.connect('mongodb://localhost/plants', function(err) {
     if (err) {
-        console.err(err);
+        console.log(err);
     } else {
         console.log('Connected');
     }    
@@ -50,13 +51,26 @@ app.get('/', function (req, res) {
 	res.render('home');
 });
 
-app.get('/profile', isLoggedIn, function(req, res) {
-	res.render('profile');
-});
+// app.get('/profile', isLoggedIn, function(req, res) {
+// 	console.log('from the server');
+// 	res.render('profile');
+// 		// POSTS FAVE PLANT TO USER PROFILE
+// 	// app.post('/profile', isLoggedIn, function(req, res){
+// 	// 	console.log('helllloooo');
+// 	// 	UserDb.findById(res.locals.currentUser.id, (err, user) => {
+// 	// 		PlantFromRoute.create(req.body, (err, plant) => {
+// 	// 			user.favePlants.push(plant);
+// 	// 			user.save();
+// 	// 		})
+// 	// 	});
+// 	// 	res.send('success');
+// 	// });
+// });
 
 // Include any routes from controllers
 app.use('/auth', require('./controllers/auth'))
-app.use('/plantPage', require('./controllers/routes'))
+app.use('/plantPage', require('./controllers/plantPage'))
+app.use('/profile', require('./controllers/profile'))
 
 	
 

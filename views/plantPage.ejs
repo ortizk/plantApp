@@ -9,6 +9,7 @@
 			<div class='col-md-12'>
 				<div id="ejsPlantCard">
 					<img id="plantImage" src=<%= plants[plant].imageUrl %>>
+					<button class="addBtn btn" data-id=<%= plants[plant]._id %> method="POST" title="Add To Your Favourites!">♥</button>
 					<div><%= plants[plant].commonName %></div>
 					<div>Light: <%= plants[plant].light%></div>
 					<div>Water:<%= plants[plant].water%></div>

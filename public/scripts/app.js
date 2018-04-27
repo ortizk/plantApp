@@ -1,6 +1,3 @@
-var allComments = [];
-// var getWeather;
-
 $(document).ready(function () {
     console.log('app.js is loaded')
 
@@ -17,16 +14,6 @@ $(document).ready(function () {
             $(this).hide();
         })
     });
-    // $('.commentForm').on('submit', function(e){
-    //  e.preventDefault()
-    //  let commentBody = $(this);
-    //  $.ajax({
-    //      method: 'PUT',
-    //      url: '/plantPage/'+$(this).attr('data-id'),
-    //      data: commentBody.serialize(),
-    //      success: newCommentSuccess,
-    //      error: newCommentError
-    //  });
     $('.commentForm').on('submit', function(e){
         e.preventDefault()
         let commentBody = $(this);
@@ -41,16 +28,29 @@ $(document).ready(function () {
             }
         })
     });
-    // getWeather = $('#weatherTarget');
-    // $.ajax({
-    //     method: 'GET',
-    //     url: "/plantPage",
-    //     success: weatherSuccess,
-    //     error: weatherError
-    // })
+    // ADDING PLANT TO USER FAVOURITES
+    $('.addBtn').on('click', function(e){
+        let dataId = $(this).attr('data-id')
+        console.log()
+        console.log(dataId);
+        newDataId = {
+            id: dataId
+        }
+        $.ajax({
+            method: 'POST',
+            url: '/profile',//+$(this).attr('data-id'),
+            data: newDataId,
+            success: newFaveSuccess,
+            error: console.log("new fave error")
+        }).then(function(data){
+        })
+    })
+    $('.delBtn').on('click', function(e){
+        console.log('delete button is clicked');
+    })
 }); 
+            
 
-// })
 
 function weatherSuccess() {
     // window.location.href='/plantPage'
@@ -64,6 +64,15 @@ function weatherError() {
 function newCommentSuccess(json) {
     window.location.href='/plantPage'
 };
+
+function newFaveSuccess(){
+    console.log('newFaveSuccess');
+    // window.location.href='/profile'
+}
+
+
+   // <a href="/profile/<%=userFaves[0].favePlants[plant].%>"></a>
+
 
 
 

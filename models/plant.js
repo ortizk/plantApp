@@ -9,6 +9,6 @@ const PlantSchema = new Schema({
 	comments: [ String ] 
 });
 
-const Plant = mongoose.model('Plant', PlantSchema);
+// const Plant = mongoose.model('Plant', PlantSchema);
 
-module.exports = Plant;
+module.exports = mongoose.model('Plant', PlantSchema);

@@ -1,5 +1,7 @@
-var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var mongoose 	= require('mongoose');
+var bcrypt 		= require('bcrypt');
+var Plant 		= require('./plant.js');
+var Schema = mongoose.Schema;
 
 // Define what a user looks like in the database
 var userSchema = mongoose.Schema({
@@ -16,8 +18,11 @@ var userSchema = mongoose.Schema({
 	city: {
 		type: String,
 		required: true
-	}
-}, { strict: true });
+	},
+	favePlants: [{type: Schema.Types.ObjectId, ref:'Plant'} ]
+	 
+	// { strict: true },
+});
 
 // Make a function that checks whether the password is correct
 userSchema.methods.isAuthenticated = function(password){

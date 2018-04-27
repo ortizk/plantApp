@@ -1,3 +1,25 @@
 <h1>PROFILE PAGE</h1>
 <h2>Hello, welcome back, <%= currentUser.name %>! </h2>
 <h2>This is where your plants will be listed along with a wish list</h2>
+
+<div class='row'>
+	<%for(let plant = 0; plant < userFaves[0].favePlants.length; plant++){%>
+		<div class='col-md-12'>
+			<div id="ejsPlantCard">
+				<img id="plantImage" src=<%= userFaves[0].favePlants[plant].imageUrl %>>
+				
+
+				<div><%= userFaves[0].favePlants[plant].commonName %></div>
+				<div>Light: <%= userFaves[0].favePlants[plant].light%></div>
+				<div>Water:<%= userFaves[0].favePlants[plant].water%></div>
+				<div class="commentTarget"><%= userFaves[0].favePlants[plant].comments %></div>
+				<button class="commentBtn btn" >Leave a Comment!</button>
+				<form class="commentForm hide" method="POST" action="/plantPage" data-id=<%= userFaves[0].favePlants[plant]._id %>>
+					<textarea class="commentBox" name="commentBox" placeholder="Comment"></textarea>
+					<button class="postBtn btn" type="submit">Post Your Comment</button>
+					<button class="cancelBtn btn">X</button>
+				</form>
+			</div>
+		</div>
+	<%};%>
+</div>
