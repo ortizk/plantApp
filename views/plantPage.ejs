@@ -1,0 +1,27 @@
+<div id="plantsBackground">
+	<% if (currentUser) {%>
+		<h1><%=temp%></h1>
+	<%}%>
+
+
+	<div class='row'>
+		<%for(let plant in plants){%>
+			<div class='col-md-12'>
+				<div id="ejsPlantCard">
+					<img id="plantImage" src=<%= plants[plant].imageUrl %>>
+					<div><%= plants[plant].commonName %></div>
+					<div>Light: <%= plants[plant].light%></div>
+					<div>Water:<%= plants[plant].water%></div>
+					<div class="commentTarget"><%= plants[plant].comments %></div>
+					<button class="commentBtn btn" >Leave a Comment!</button>
+					<form class="commentForm hide" method="POST" action="/plantPage" data-id=<%= plants[plant]._id %>>
+						<textarea class="commentBox" name="commentBox" placeholder="Comment"></textarea>
+						<button class="postBtn btn" type="submit">Post Your Comment</button>
+						<button class="cancelBtn btn">X</button>
+					</form>
+				</div>
+			</div>
+		<%};%>
+	</div>
+</div>
+
