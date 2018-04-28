@@ -44,32 +44,8 @@ router.post('/:id', function(req, res){
 				}
 			}
 		)
-		res.redirect('/');
-})
-// // POSTS FAVE PLANT TO USER PROFILE
-// router.post('/profile', isLoggedIn, function(req, res){
-// 	console.log('helllloooo');
-// 	UserDb.findById(res.locals.currentUser.id, (err, user) => {
-// 		PlantFromRoute.create(req.body, (err, plant) => {
-// 			user.favePlants.push(plant);
-// 			user.save();
-// 		})
-// 	});
-// 	res.send('success');
-// });
 
-// // RENDERS PROFILE WITH FAVE PLANTS
-// router.get('/profile', isLoggedIn, function(req, res){
-// 	res.render('profile', {currentUser: res.locals.currentUser});
-// });
-
-
-
-
-
-
-
-
+});
 
 
 
@@ -78,3 +54,5 @@ router.post('/:id', function(req, res){
 
 
 module.exports = router;
+
+

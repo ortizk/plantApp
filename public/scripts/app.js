@@ -6,7 +6,7 @@ $(document).ready(function () {
         $(this).hide();
 
         // show the form
-        $(this).next().show();
+        $(this).next().removeClass('hide');
 
         // // show the post button
         // $(this).next().next().show();
@@ -14,6 +14,7 @@ $(document).ready(function () {
             $(this).hide();
         })
     });
+    // ADDING COMMENTS TO PLANT
     $('.commentForm').on('submit', function(e){
         e.preventDefault()
         let commentBody = $(this);
@@ -21,7 +22,7 @@ $(document).ready(function () {
             method: 'POST',
             url: '/plantPage/'+$(this).attr('data-id'),
             data: commentBody.serialize(),
-            success: newCommentSuccess,
+            success: newCommentSuccess($(this).attr('data-id'), commentBody),
             error: function(request, status, error){
                 console.log(request.responseText);
                 console.log('error is', error)
@@ -45,10 +46,26 @@ $(document).ready(function () {
         }).then(function(data){
         })
     })
+    //  DELETE FAVE PLANT
     $('.delBtn').on('click', function(e){
-        console.log('delete button is clicked');
+        console.log($(this).attr('data-id'))
+        $.ajax({
+            method: 'DELETE',
+            url: '/profile/'+$(this).attr('data-id'),
+            success: console.log('delete fave success'),
+            error: console.log('delete fave error')
+    }).then(() => {
+        $(this).parent().remove();
+    })
     })
 }); 
+
+
+
+
+
+
+        
             
 
 
@@ -61,8 +78,14 @@ function weatherError() {
     console.log('got to weather error');
 }
 
-function newCommentSuccess(json) {
-    window.location.href='/plantPage'
+function newCommentSuccess(id, commentBody) {
+        // res.redirect('/');
+        console.log(commentBody)
+        $('div[data-id="'+id+'"]').find('.commentTarget').append("<div>"+ commentBody[0][0].value + "</div>");
+        $('.commentForm').addClass('hide');
+        $('.commentBtn').show();
+        commentBody[0][0].value = "";
+
 };
 
 function newFaveSuccess(){
@@ -70,8 +93,17 @@ function newFaveSuccess(){
     // window.location.href='/profile'
 }
 
+    // Water by Aybige from the Noun Project
+    // Water by Aybige from the Noun Project
+    // Summer by Adrien Coquet from the Noun Project
+    // sun by Akriti Bhusal from the Noun Project
+    // Plant by LSE Designs from the Noun Project
+    // Favorite by Chunk Icons from the Noun Project
 
-   // <a href="/profile/<%=userFaves[0].favePlants[plant].%>"></a>
+              //     <li class="nav-item">
+              //   <a class="nav-link" href="/plantPage">Find A Plant</a>
+              // </li>
+
 
 
 

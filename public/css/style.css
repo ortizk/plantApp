@@ -1,13 +1,14 @@
 #ejsPlantCard {
-	/*display: inline-block;*/
-	/*padding: 7%;*/
 	text-align: center;
+	margin-top: 10%;
+
 }
 #plantImage {
 	border-radius: 100px;
+	margin: 10px;
 }
 .hide {
-	display: none
+	display: none;
 }
 img{
 	width: 400px;
@@ -23,32 +24,69 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-.headerNav {
-
+.navbar {
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+	opacity: .8;
 }
 .nav {
-	background-color: white;
-	height: 75px;
+/*	background-color: white;
+	height: 75px;*/
 }
 .btn {
-	color: black;
+/*	color: black;
 	background-color: transparent;
-	border: 4px solid black;
+	border: 4px solid black;*/
 }
 h1 {
 	color: white;
 	font-family: 'Open Sans Condensed', sans-serif;
 }
+h2 {
+	color: white;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
 #plantsBackground {
-	background-color: green;
+	/*background-color: #8ACE14;*/
+	/*opacity: .5;*/
 }
 textarea {
 	background-color: transparent;
 	border: 4px solid black;
 }
-.commentTarget {
-
+.mainP{
+	font-size: 50px;
+	padding-top: 20%;
 }
-/*.postBtn {
-	display: inline-block;
-}*/
+.mainX {
+	font-size: 50px;
+	padding-top: 10%;
+}
+.addBtn img {
+	height: 40px;
+	width: 40px;
+}
+.careIcon {
+	height: 30px;
+	width: 30px;
+	margin: 10px;
+}
+.plantName {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 50px;
+}
+.commentBtn {
+	margin: 10px;
+}
+.profilePage {
+	margin-top: 10%;
+	position: fixed;
+	z-index: 1;
+}
+#logo {
+	height: 60px;
+	width: 60px;
+}
+
+

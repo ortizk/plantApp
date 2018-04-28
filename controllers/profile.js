@@ -11,23 +11,19 @@ router.get('/', isLoggedIn, function(req, res) {
 	UserDb.find().populate('favePlants').exec(function (err, userFaves) {
 		res.render('profile', {userFaves});
 	})
-		
-
 });
+router.delete('/:id', function(req, res){
+	UserDb.findById(res.locals.currentUser.id, (err, user) => {
+		let i = user.favePlants.indexOf(req.params.id);
+		user.favePlants.splice(i, 1);
+		user.save();
+		console.log(user.favePlants);
+		res.send('deleted fave plant');
+	})
+})	
 
-// POSTS FAVE PLANT TO USER PROFILE
-// router.post('/', isLoggedIn, function(req, res){
-// 	console.log(req.body);
-// 	UserDb.findById(res.locals.currentUser.id, (err, user) => {
 
-// 		UserDb.create(req.body, (err, plant) => {
-// 			user.favePlants.push(plant);
-// 			user.save();
-// 		})
-// 	});
-// 	res.send('success');
-// });
-
+// POSTING FAVES TO USER PROFILE
 router.post('/', isLoggedIn, function(req, res){
 	console.log(req.body);
 	UserDb.findById(res.locals.currentUser.id, (err, user) => {

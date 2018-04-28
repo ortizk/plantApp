@@ -1,22 +1,53 @@
 <div id="plantsBackground">
 	<% if (currentUser) {%>
-		<h1><%=temp%></h1>
-	<%}%>
+		<div class="mainX">
+			<h1>Hey <%=currentUser.name%>, it's <%=temp%>˚C in <%=currentUser.city%> today.</h1>
+		</div>
+		<%} else {%>
+			<h1 class="mainX">Thanks for visiting! Sign up or Log In to save your Favourite Plants!</h1>
+		<%}%>
 
 
 	<div class='row'>
 		<%for(let plant in plants){%>
 			<div class='col-md-12'>
-				<div id="ejsPlantCard">
+				<div id="ejsPlantCard" data-id=<%= plants[plant]._id%>>
 					<img id="plantImage" src=<%= plants[plant].imageUrl %>>
-					<button class="addBtn btn" data-id=<%= plants[plant]._id %> method="POST" title="Add To Your Favourites!">♥</button>
-					<div><%= plants[plant].commonName %></div>
-					<div>Light: <%= plants[plant].light%></div>
-					<div>Water:<%= plants[plant].water%></div>
-					<div class="commentTarget"><%= plants[plant].comments %></div>
+					<br>
+					<% if (currentUser) {%>
+						<button class="addBtn btn" data-id=<%= plants[plant]._id %> method="POST" title="Add To Your Favourites!"><img src="../images/noun_1084894_cc.png"></button>
+					<%}%>
+					<div class="plantName"><%= plants[plant].commonName %></div>
+					<%var water = plants[plant].water - 1%>
+					<% for (let i = 0; i < 3; i++) {%>
+						<% if (i <= water) {%>
+							<img class="careIcon" src="../images/noun_1560231_cc.png">
+						<% } else {%>
+							<img class="careIcon" src="../images/noun_1276517_cc.png">
+						<%};%>
+					<%};%>
+					<br>
+					<%var light = plants[plant].light - 1%>
+					<% for (let i = 0; i < 3; i++) {%>
+						<% if (i <= light) {%>
+							<img class="careIcon" src="../images/noun_980894_cc.png">
+						<% } else {%>
+							<img class="careIcon" src="../images/noun_1554814_cc.png">
+						<%};%>
+					<%};%>
+
+					<div class="commentTarget">
+						<% for(i = 0; i < plants[plant].comments.length; i++) {%>
+							<div>
+								<%= plants[plant].comments[i] %>
+							</div>
+						<%};%>
+						
+					</div>
 					<button class="commentBtn btn" >Leave a Comment!</button>
 					<form class="commentForm hide" method="POST" action="/plantPage" data-id=<%= plants[plant]._id %>>
 						<textarea class="commentBox" name="commentBox" placeholder="Comment"></textarea>
+						<br>
 						<button class="postBtn btn" type="submit">Post Your Comment</button>
 						<button class="cancelBtn btn">X</button>
 					</form>

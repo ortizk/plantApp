@@ -1,25 +1,57 @@
-<h1>PROFILE PAGE</h1>
-<h2>Hello, welcome back, <%= currentUser.name %>! </h2>
-<h2>This is where your plants will be listed along with a wish list</h2>
+<div class="profilePage">
+	<h1>YOUR FAVOURITES</h1>
+	<h2>Hello, welcome back,</h2>
+	<h2> <%= currentUser.name %>! </h2>
 
-<div class='row'>
-	<%for(let plant = 0; plant < userFaves[0].favePlants.length; plant++){%>
-		<div class='col-md-12'>
-			<div id="ejsPlantCard">
-				<img id="plantImage" src=<%= userFaves[0].favePlants[plant].imageUrl %>>
-				
-
-				<div><%= userFaves[0].favePlants[plant].commonName %></div>
-				<div>Light: <%= userFaves[0].favePlants[plant].light%></div>
-				<div>Water:<%= userFaves[0].favePlants[plant].water%></div>
-				<div class="commentTarget"><%= userFaves[0].favePlants[plant].comments %></div>
-				<button class="commentBtn btn" >Leave a Comment!</button>
-				<form class="commentForm hide" method="POST" action="/plantPage" data-id=<%= userFaves[0].favePlants[plant]._id %>>
-					<textarea class="commentBox" name="commentBox" placeholder="Comment"></textarea>
-					<button class="postBtn btn" type="submit">Post Your Comment</button>
-					<button class="cancelBtn btn">X</button>
-				</form>
-			</div>
-		</div>
-	<%};%>
 </div>
+
+
+
+
+
+	<div class='row'>
+		<%for(let plant = 0; plant < userFaves[0].favePlants.length; plant++){%>
+			<div class='col-md-12'>
+				<div id="ejsPlantCard" data-id=<%= userFaves[0].favePlants[plant]._id%>>
+					<img id="plantImage" src=<%= userFaves[0].favePlants[plant].imageUrl %>>
+					<br>
+					<button class="addBtn btn" data-id=<%= userFaves[0].favePlants[plant]._id %> method="POST" title="Add To Your Favourites!"><img src="../images/noun_1084894_cc.png"></button>
+					<div class="plantName"><%= userFaves[0].favePlants[plant].commonName %></div>
+					<%var water = userFaves[0].favePlants[plant].water - 1%>
+					<% for (let i = 0; i < 3; i++) {%>
+						<% if (i <= water) {%>
+							<img class="careIcon" src="../images/noun_1560231_cc.png">
+						<% } else {%>
+							<img class="careIcon" src="../images/noun_1276517_cc.png">
+						<%};%>
+					<%};%>
+					<br>
+					<%var light = userFaves[0].favePlants[plant].light - 1%>
+					<% for (let i = 0; i < 3; i++) {%>
+						<% if (i <= light) {%>
+							<img class="careIcon" src="../images/noun_980894_cc.png">
+						<% } else {%>
+							<img class="careIcon" src="../images/noun_1554814_cc.png">
+						<%};%>
+					<%};%>
+
+					<div class="commentTarget">
+						<% for(i = 0; i < userFaves[0].favePlants[plant].comments.length; i++) {%>
+							<div>
+								<%= userFaves[0].favePlants[plant].comments[i] %>
+							</div>
+						<%};%>
+						
+					</div>
+					<button class="commentBtn btn" >Leave a Comment!</button>
+					<form class="commentForm hide" method="POST" action="/plantPage" data-id=<%= userFaves[0].favePlants[plant]._id %>>
+						<textarea class="commentBox" name="commentBox" placeholder="Comment"></textarea>
+						<br>
+						<button class="postBtn btn" type="submit">Post Your Comment</button>
+						<button class="cancelBtn btn">X</button>
+					</form>
+				</div>
+			</div>
+		<%};%>
+	</div>
+

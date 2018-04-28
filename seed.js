@@ -127,6 +127,22 @@ var plantSeed = [
 		water: 1,
 		imageUrl: "./images/warty.jpg"
 	},
+	{
+		commonName: 'Rubber Tree Plant',
+		light: 2,
+		water: 1,
+		imageUrl: "./images/rubber.jpg"
+	},
+	{
+		commonName: 'Pothos',
+		light: 3,
+		water: 2,
+		imageUrl: "./images/pothos.jpg"
+	},
+	{	commonName: 'Cast Iron Plant',
+		light: 2,
+		water: 2,
+		imageUrl: "./images/iron.jpg"}
 	]
 // Sources
 	// http://balconygardenweb.com/14-best-indoor-succulents-to-grow-at-home/
