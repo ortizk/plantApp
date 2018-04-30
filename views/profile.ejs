@@ -1,5 +1,5 @@
 <div class="profilePage">
-	<h1>YOUR FAVOURITES</h1>
+	<h2>YOUR FAVOURITES</h2>
 	<h2>Hello, welcome back,</h2>
 	<h2> <%= currentUser.name %>! </h2>
 
@@ -15,7 +15,7 @@
 				<div id="ejsPlantCard" data-id=<%= userFaves[0].favePlants[plant]._id%>>
 					<img id="plantImage" src=<%= userFaves[0].favePlants[plant].imageUrl %>>
 					<br>
-					<button class="addBtn btn" data-id=<%= userFaves[0].favePlants[plant]._id %> method="POST" title="Add To Your Favourites!"><img src="../images/noun_1084894_cc.png"></button>
+					<button class="delBtn btn" data-id=<%= userFaves[0].favePlants[plant]._id %> title="Delete From Your Favourites"><img src="../images/noun_1698637_cc.png"></button>
 					<div class="plantName"><%= userFaves[0].favePlants[plant].commonName %></div>
 					<%var water = userFaves[0].favePlants[plant].water - 1%>
 					<% for (let i = 0; i < 3; i++) {%>

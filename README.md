@@ -61,4 +61,5 @@ To create an app for plant lovers that have a hard time keeping plants alive. Su
 3. Sun by Akriti Bhusal from the Noun Project
 4. Plant by LSE Designs from the Noun Project
 5. Favorite by Chunk Icons from the Noun Project
-6. https://openweathermap.org/
+6. Trash by Aman from the Noun Project
+7. https://openweathermap.org/
