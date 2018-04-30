@@ -1,10 +1,10 @@
 <div id="plantsBackground">
 	<% if (currentUser) {%>
-		<div class="plantPH1">
+		<div class="plantPH1 paddingTopSmallScreen">
 			<h1>Hey <%=currentUser.name%>, it's <%=temp%>˚C in <%=currentUser.city%> today.</h1>
 		</div>
 		<%} else {%>
-			<h1 class="plantPH1">Thanks for visiting! Sign up or Log In to save your Favourite Plants!</h1>
+			<h1 class="plantPH1 paddingTopSmallScreen">Thanks for visiting! Sign up or Log In to save your Favourite Plants!</h1>
 		<%}%>
 
 

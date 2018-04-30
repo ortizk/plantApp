@@ -9,7 +9,13 @@ require('dotenv').config();
 router.get('/', isLoggedIn, function(req, res) {
 	console.log('from the server');
 	UserDb.find().populate('favePlants').exec(function (err, userFaves) {
-		res.render('profile', {userFaves});
+		let currentUserDetails;
+		userFaves.forEach( (user) => {
+			if (user._id == res.locals.currentUser.id) {
+				currentUserDetails = user;
+			}
+		})
+		res.render('profile', {userFaves: currentUserDetails});
 	})
 });
 router.delete('/:id', function(req, res){
