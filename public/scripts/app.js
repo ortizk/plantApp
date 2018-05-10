@@ -62,13 +62,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-        
-            
-
-
 function weatherSuccess() {
     // window.location.href='/plantPage'
     console.log('got to weather success');

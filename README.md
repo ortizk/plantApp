@@ -4,6 +4,8 @@ Black To Green App
 
 An app for plant lovers with black thumbs. A list of plants that are hard to kill.
 
+[CLICK HERE TO VISIT THE APP](http://blacktogreen.herokuapp.com/)
+
 ----------
 
 
